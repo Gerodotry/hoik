@@ -50,8 +50,8 @@ jobs:
         uses: sonarsource/sonarqube-scan-action@v3
         env:
           SONAR_TOKEN: 319a3fc111724bc1bea3b792413169d94d41b606
-          SONAR_ORG: Gerodotry
-          SONAR_PROJECT_KEY: gerodotry
+          SONAR_ORG: my_django_project_key
+          SONAR_PROJECT_KEY: my_django_project_key
           SONAR_HOST_URL: https://sonarcloud.io 
         
 
