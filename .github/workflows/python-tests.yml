@@ -51,6 +51,7 @@ jobs:
           SONAR_TOKEN: a83af31d2553b9e744f8f1e959c0f67f3de9ac43
         with:
           args: >
+            -Dsonar.sonar.sources=.
             -Dsonar.projectKey=Gerodotry_hoik
             -Dsonar.organization=Gero
             -Dsonar.host.url=https://sonarcloud.io
