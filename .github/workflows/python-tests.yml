@@ -17,16 +17,16 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.10'
+          python-version: '3.10'  # Встановіть версію Python, яку ви використовуєте
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install django djangorestframework
+          pip install django djangorestframework  # Встановіть ваші залежності
 
       - name: Run tests
         run: |
-          python manage.py test --verbosity=3 --failfast > results.txt; \
+          python manage.py test --verbosity=2 --failfast > results.txt; \
           if [ -f results.txt ]; then echo "Test results:"; cat results.txt; fi
           
       - name: Upload test results
@@ -37,12 +37,15 @@ jobs:
       
       - name: Install SonarScanner
         run: |
-          sudo apt-get install -y openjdk-11-jre  # Встановіть Java, якщо потрібно
-          wget -qO - https://downloads.sonarsource.com/sonar-scanner/cli/sonar-scanner-cli-4.6.2.2472-linux.zip | funzip > sonar-scanner.zip
-          unzip sonar-scanner.zip -d $HOME
+          sudo apt-get update
+          sudo apt-get install -y openjdk-11-jre unzip  # Встановіть Java та unzip
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+          unzip sonar-scanner-cli-4.6.2.2472-linux.zip -d $HOME
           export PATH="$HOME/sonar-scanner-4.6.2.2472-linux/bin:$PATH"
-
+      
       - name: Run SonarQube analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Зберігайте токен у секретах GitHub
         run: |
           sonar-scanner -Dsonar.projectKey=my_django_project_key \
                         -Dsonar.host.url=http://localhost:9000 \
