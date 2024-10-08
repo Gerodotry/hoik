@@ -50,6 +50,6 @@ jobs:
         uses: sonarsource/sonarqube-scan-action@v3
         env:
           SONAR_TOKEN: squ_20743147b87b02eb29d9979c4564f92a2462cdda
-          SONAR_HOST_URL: http://localhost:9000
+          SONAR_HOST_URL: http://localhost:8000
       
 
