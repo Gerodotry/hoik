@@ -52,7 +52,7 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=Gerodotry_hoik
-            -Dsonar.organization=hoik
+            -Dsonar.organization=Gerodotry_hoik
             -Dsonar.host.url=https://sonarcloud.io
 
         
