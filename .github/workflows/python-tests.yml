@@ -1,8 +1,8 @@
-name: Python Tests
+name: CI Pipeline
 
-on: 
-  push: 
-    branches: 
+on:
+  push:
+    branches:
       - master  # Змініть на вашу основну гілку, якщо потрібно
   pull_request:
 
@@ -28,9 +28,28 @@ jobs:
         run: |
           python manage.py test --verbosity=2 --failfast > results.txt; \
           if [ -f results.txt ]; then echo "Test results:"; cat results.txt; fi
-          
+
       - name: Upload test results
         uses: actions/upload-artifact@v3  # Оновлено до v3
         with:
           name: test-results
           path: results.txt
+
+  build:
+    name: Build and analyze
+    runs-on: ubuntu-latest
+    needs: test  # Ensure build job runs after the test job
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@v3
+        env:
+          SONAR_TOKEN: squ_20743147b87b02eb29d9979c4564f92a2462cdda
+          SONAR_HOST_URL: http://localhost:9000
+      
+
