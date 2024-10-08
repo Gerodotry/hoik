@@ -48,11 +48,11 @@ jobs:
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@v3
         env:
-          SONAR_TOKEN: 319a3fc111724bc1bea3b792413169d94d41b606
+          SONAR_TOKEN: a83af31d2553b9e744f8f1e959c0f67f3de9ac43
         with:
           args: >
             -Dsonar.projectKey=Gerodotry_hoik
-            -Dsonar.organization=Gerodotryttt
+            -Dsonar.organization=Gero
             -Dsonar.host.url=https://sonarcloud.io
 
         
