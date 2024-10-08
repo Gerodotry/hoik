@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: '3.10'
 
@@ -26,7 +26,7 @@ jobs:
 
       - name: Run tests
         run: |
-          python manage.py test --verbosity=2 --failfast > results.txt; \
+          python manage.py test --verbosity=3 --failfast > results.txt; \
           if [ -f results.txt ]; then echo "Test results:"; cat results.txt; fi
           
       - name: Upload test results
