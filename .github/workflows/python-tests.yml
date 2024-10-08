@@ -3,7 +3,7 @@ name: Python Tests
 on: 
   push: 
     branches: 
-      - master
+      - main  # Змініть на вашу основну гілку, якщо потрібно
   pull_request:
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
       
       - name: Set up Python
         uses: actions/setup-python@v3
@@ -41,7 +41,7 @@ jobs:
           sudo apt-get install -y openjdk-11-jre unzip  # Встановіть Java та unzip
           wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
           unzip sonar-scanner-cli-4.6.2.2472-linux.zip -d $HOME
-          export PATH="$HOME/sonar-scanner-4.6.2.2472-linux/bin:$PATH"
+          echo "$HOME/sonar-scanner-4.6.2.2472-linux/bin" >> $GITHUB_PATH  # Додаємо шлях до PATH
       
       - name: Run SonarQube analysis
         env:
@@ -49,4 +49,4 @@ jobs:
         run: |
           sonar-scanner -Dsonar.projectKey=my_django_project_key \
                         -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=squ_20743147b87b02eb29d9979c4564f92a2462cdda
+                        -Dsonar.login=${{ secrets.SONAR_TOKEN }}  # Використання токена з секретів
