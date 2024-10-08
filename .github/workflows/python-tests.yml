@@ -3,7 +3,7 @@ name: Python Tests
 on: 
   push: 
     branches: 
-      - main  # Змініть на вашу основну гілку, якщо потрібно
+      - master  # Змініть на вашу основну гілку, якщо потрібно
   pull_request:
 
 jobs:
