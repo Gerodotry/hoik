@@ -44,6 +44,6 @@ jobs:
 
       - name: Run SonarQube analysis
         run: |
-          sonar-scanner -Dsonar.projectKey=my_project_key \
+          sonar-scanner -Dsonar.projectKey=my_django_project_key \
                         -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=your_token_here
+                        -Dsonar.login=squ_20743147b87b02eb29d9979c4564f92a2462cdda
