@@ -51,7 +51,7 @@ jobs:
           SONAR_TOKEN: 319a3fc111724bc1bea3b792413169d94d41b606
         with:
           args: >
-            -Dsonar.projectKey=my_django_project_key
+            -Dsonar.projectKey=Gerodotry_hoik
             -Dsonar.organization=Gerodotry
             -Dsonar.host.url=https://sonarcloud.io
 
