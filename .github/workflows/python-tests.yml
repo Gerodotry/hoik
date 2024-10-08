@@ -49,10 +49,9 @@ jobs:
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@v3
         env:
-          SONAR_TOKEN: squ_20743147b87b02eb29d9979c4564f92a2462cdda
-          SONAR_HOST_URL: https://3f32-176-111-180-208.ngrok-free.app 
-          SONAR_PROJECT_KEY: my_django_project_key
-          SONAR_PROJECT_NAME: my_django_project_key
-          SONAR_PROJECT_VERSION: 1.0  # Додайте версію проекту
-          SONAR_SOURCES: .  # Додайте директорію з вихідними файлами
+          SONAR_TOKEN: 319a3fc111724bc1bea3b792413169d94d41b606
+          SONAR_ORG: Gerodotry
+          SONAR_PROJECT_KEY: gerodotry
+          SONAR_HOST_URL: https://sonarcloud.io 
+        
 
