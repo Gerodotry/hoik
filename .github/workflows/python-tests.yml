@@ -3,7 +3,7 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - master  # Змініть на вашу основну гілку, якщо потрібно
+      - master 
   pull_request:
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10'  # Встановіть версію Python, яку ви використовуєте
+          python-version: '3.10'  
 
       - name: Install dependencies
         run: |
@@ -38,13 +38,13 @@ jobs:
   build:
     name: Build and analyze
     runs-on: ubuntu-latest
-    needs: test  # Ensure build job runs after the test job
+    needs: test  
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Ensure full history for SonarQube analysis
+          fetch-depth: 0 
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -59,7 +59,7 @@ jobs:
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@v3
         env:
-          SONAR_TOKEN: a83af31d2553b9e744f8f1e959c0f67f3de9ac43  # Використовуйте GitHub Secrets для збереження токену
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
             -Dsonar.projectKey=Gerodotry_hoik
