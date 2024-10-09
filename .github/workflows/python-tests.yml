@@ -44,6 +44,7 @@ jobs:
             -Dsonar.projectKey=Gerodotry_hoik
             -Dsonar.organization=gero
             -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.qualitygate.wait=true
   
   build:
     name: Build and analyze
