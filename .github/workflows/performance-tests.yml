@@ -3,10 +3,10 @@ name: Performance Tests
 on:
   push:
     branches:
-      - master
+      - master  # Виконувати на кожен пуш в гілку master
   pull_request:
     branches:
-      - master
+      - master  # Виконувати на кожен PR в гілку master
 
 jobs:
   performance-tests:
@@ -26,7 +26,7 @@ jobs:
       - name: Run Performance Tests
         run: |
           mkdir -p reports
-          k6 run --out json=reports/k6_report.json tests/performance-test.js
+          k6 run --out json=reports/k6_report.json hoik/performance-test.js
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v3
