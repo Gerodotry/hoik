@@ -1,17 +1,17 @@
 import http from 'k6/http';
 import { sleep } from 'k6';
 
+// Функція для випадкової затримки між запитами
+function getThinkTime() {
+  return Math.random() * (2 - 1) + 1; // випадкова затримка між 1 і 2 секундами
+}
+
 export const options = {
   discardResponseBodies: true,
-  ext: {
-    prometheus: {
-      address: 'http://localhost:6565', // Налаштування Prometheus
-    },
-  },
   scenarios: {
     contactsRamping: {
       executor: 'ramping-vus',
-      startTime: '0s',
+      startTime: '0s', // Починається одразу
       startVUs: 0,
       stages: [
         { duration: '20s', target: 10 },
@@ -38,3 +38,5 @@ export const options = {
 export default function () {
   // Виконання GET запиту
   http.get('http://127.0.0.1:8000/products/45600/');
+  sleep(getThinkTime()); // додаємо затримку
+}
